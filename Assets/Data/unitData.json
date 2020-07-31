@@ -1,0 +1,5 @@
+[
+    {"Name":"Settler","Cost":20,"Abilities":[false,false,true,true]},
+    {"Name":"Worker","Cost":10,"Abilities":[false,false,true,false]},
+    {"Name":"Sailor","Cost":15,"Abilities":[true,true,false,false]}
+]

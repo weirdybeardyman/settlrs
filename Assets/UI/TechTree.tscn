@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Scripts/UI_TechTree.gd" type="Script" id=1]
+[ext_resource path="res://Assets/UI/Tree.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/UI/close-button.png" type="Texture" id=3]
+[ext_resource path="res://Temp/Font/segoeuib.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 41
+font_data = ExtResource( 4 )
+
+[node name="TechTree" type="Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+treeScene = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 250.0
+margin_top = 97.0
+margin_right = 1673.0
+margin_bottom = 870.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0.282353, 0.282353, 0.282353, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.413
+anchor_right = 0.5
+anchor_bottom = 0.413
+margin_left = -710.0
+margin_top = -273.04
+margin_right = 713.0
+margin_bottom = 427.96
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Columns" type="HBoxContainer" parent="Container"]
+margin_right = 1423.0
+
+[node name="Close" type="TextureButton" parent="."]
+margin_left = 1606.96
+margin_top = 106.035
+margin_right = 1656.96
+margin_bottom = 156.035
+texture_normal = ExtResource( 3 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Header Text" type="Label" parent="."]
+margin_left = 851.08
+margin_top = 102.06
+margin_right = 1171.08
+margin_bottom = 158.06
+custom_fonts/font = SubResource( 1 )
+text = "Technology Tree"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Close" to="." method="_on_Close_pressed"]

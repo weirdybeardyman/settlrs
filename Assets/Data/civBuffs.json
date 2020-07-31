@@ -1,0 +1,28 @@
+{
+    "Can":
+    {
+        "Fish":false,
+        "Wheat":false,
+        "Wood":false,
+        "Ore":false,
+        "Gold":true,
+        "Coast":false,
+        "Sea":false,
+        "Climb":false,
+        "Trade":false,
+        "Road":false
+    },
+    "Bonus":
+    {
+        "Wheat":0,
+        "Fish":0,
+        "Wood":0,
+        "Ore":0,
+        "Gold":0,
+        "Move":0,
+        "Tech":0,
+        "Road":0,
+        "City":0
+    }
+
+}

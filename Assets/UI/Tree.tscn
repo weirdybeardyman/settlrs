@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Scripts/UI_Tree.gd" type="Script" id=1]
+[ext_resource path="res://Assets/UI/Tech.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Temp/Font/segoeuib.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 3 )
+
+[node name="Tree" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+techScene = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0.172549, 0.172549, 0.172549, 1 )
+
+[node name="Rows" type="VBoxContainer" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+
+[node name="TreeName" type="Label" parent="Rows"]
+margin_right = 1920.0
+margin_bottom = 44.0
+custom_fonts/font = SubResource( 1 )
+align = 1
+valign = 1

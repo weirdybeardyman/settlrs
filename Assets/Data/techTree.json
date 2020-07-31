@@ -1,0 +1,9 @@
+{
+    "Wheat":{"Sythe":[5,false,"Enables wheat farming.","Can","Wheat",true],"Plough":[5,false,"Context","Bonus","Wheat",1],"Irrigation":[5,false,"Context","Bonus","Wheat",2]},
+    "Fish":{"Fishing Boat":[5,false,"Context","Can","Fish",true],"Nets":[5,false,"Context","Bonus","Fish",1]},
+    "Wood":{"Axe":[5,false,"Context","Can","Wood",true],"Saw":[5,false,"Context","Bonus","Wood",1],"Two-man Saw":[5,false,"Context","Bonus","Wood",2]},
+    "Metal":{"Pickaxe":[5,false,"Context","Can","Ore",true],"Smeltery":[5,false,"Context","Bonus","Ore",1],"Refinery":[5,false,"Context","Bonus","Ore",2]},
+    "Land":{"Climbing":[5,false,"Context","Can","Climb",true]},
+    "Sea":{"Boats":[5,false,"Context","Can","Coast",true],"Sailing":[5,false,"Context","Can","Sea",true]},
+    "General":{"Trade":[5,false,"Context","Can","Trade",true],"Roads":[5,false,"Context","Can","Road",true],"Wheel":[5,false,"Context","Bonus","Move",1],"Writing":[5,false,"Context","Bonus","Tech",-1],"Paving":[5,false,"Context","Bonus","Road",-1],"City Planning":[5,false,"Context","Bonus","City",-1]}
+}

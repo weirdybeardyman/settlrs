@@ -1,0 +1,195 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/UI/close-button.png" type="Texture" id=1]
+[ext_resource path="res://Temp/Font/segoeuib.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/Scripts/UI_UnitContext.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 2 )
+
+[node name="ContextMenu" type="PanelContainer"]
+margin_right = 239.0
+margin_bottom = 254.0
+size_flags_vertical = 2
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 232.0
+margin_bottom = 295.0
+
+[node name="Header" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 225.0
+margin_bottom = 41.0
+custom_constants/separation = 0
+
+[node name="Name" type="Label" parent="VBoxContainer/Header"]
+margin_right = 83.0
+margin_bottom = 41.0
+grow_horizontal = 0
+custom_fonts/font = SubResource( 1 )
+text = "Name"
+align = 1
+
+[node name="Close" type="TextureButton" parent="VBoxContainer/Header"]
+margin_left = 83.0
+margin_right = 225.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource( 1 )
+expand = true
+stretch_mode = 5
+
+[node name="StatsMargin" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 45.0
+margin_right = 225.0
+margin_bottom = 196.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/StatsMargin"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 215.0
+margin_bottom = 141.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 1, 1, 1, 0.27451 )
+
+[node name="StatsList" type="VBoxContainer" parent="VBoxContainer/StatsMargin"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 215.0
+margin_bottom = 141.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Moves Left" type="HBoxContainer" parent="VBoxContainer/StatsMargin/StatsList"]
+margin_right = 205.0
+margin_bottom = 41.0
+
+[node name="Label" type="Label" parent="VBoxContainer/StatsMargin/StatsList/Moves Left"]
+margin_right = 157.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 2 )
+text = "Moves left:"
+
+[node name="moves left" type="Label" parent="VBoxContainer/StatsMargin/StatsList/Moves Left"]
+margin_left = 161.0
+margin_right = 178.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 2 )
+text = "1"
+
+[node name="Move Range" type="HBoxContainer" parent="VBoxContainer/StatsMargin/StatsList"]
+margin_top = 45.0
+margin_right = 205.0
+margin_bottom = 86.0
+
+[node name="Label" type="Label" parent="VBoxContainer/StatsMargin/StatsList/Move Range"]
+margin_right = 184.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 2 )
+text = "Move  range:"
+
+[node name="move range" type="Label" parent="VBoxContainer/StatsMargin/StatsList/Move Range"]
+margin_left = 188.0
+margin_right = 205.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 2 )
+text = "1"
+
+[node name="Health" type="HBoxContainer" parent="VBoxContainer/StatsMargin/StatsList"]
+margin_top = 90.0
+margin_right = 205.0
+margin_bottom = 131.0
+
+[node name="Label" type="Label" parent="VBoxContainer/StatsMargin/StatsList/Health"]
+margin_right = 102.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 2 )
+text = "Health:"
+
+[node name="health" type="Label" parent="VBoxContainer/StatsMargin/StatsList/Health"]
+margin_left = 106.0
+margin_right = 162.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 2 )
+text = "City"
+
+[node name="Player" type="HBoxContainer" parent="VBoxContainer/StatsMargin/StatsList"]
+visible = false
+margin_top = 135.0
+margin_right = 207.0
+margin_bottom = 176.0
+
+[node name="Label" type="Label" parent="VBoxContainer/StatsMargin/StatsList/Player"]
+margin_right = 95.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 2 )
+text = "Player:"
+
+[node name="player" type="Label" parent="VBoxContainer/StatsMargin/StatsList/Player"]
+margin_left = 99.0
+margin_right = 155.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 2 )
+text = "City"
+
+[node name="ButtonsMargin" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 200.0
+margin_right = 225.0
+margin_bottom = 288.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="ButtonsList" type="VBoxContainer" parent="VBoxContainer/ButtonsMargin"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 215.0
+margin_bottom = 78.0
+
+[node name="Settle" type="Button" parent="VBoxContainer/ButtonsMargin/ButtonsList"]
+margin_right = 205.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Settle"
+
+[node name="Work" type="Button" parent="VBoxContainer/ButtonsMargin/ButtonsList"]
+margin_top = 24.0
+margin_right = 205.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Work"
+
+[node name="Build Road" type="Button" parent="VBoxContainer/ButtonsMargin/ButtonsList"]
+margin_top = 48.0
+margin_right = 205.0
+margin_bottom = 68.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Build Road"
+[connection signal="pressed" from="VBoxContainer/Header/Close" to="." method="_on_Close_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonsMargin/ButtonsList/Settle" to="." method="_on_Settle_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonsMargin/ButtonsList/Work" to="." method="_on_Work_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonsMargin/ButtonsList/Build Road" to="." method="_on_Build_Road_pressed"]
