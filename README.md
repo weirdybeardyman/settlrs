@@ -7,6 +7,7 @@ Godot multiplayer hex strategy game for mobile.
 - [x] Technology, units, cities, roads and resources.
 - [x] Dijkstra’s Algorithm based One-Turn pathfinding.
 - [x] Tech Tree
+- [ ] Fog of War
 - [ ] Civilizations
 - [ ] Firebase implementation - Accounts and multiplayer games
 - [ ] Music player
