@@ -6,6 +6,7 @@ Godot multiplayer hex strategy game for mobile.
 - [x] Simplex-noise map generation and resource distribution
 - [x] Technology, units, cities, roads and resources.
 - [x] Dijkstra’s Algorithm based One-Turn pathfinding.
+- [x] Tech Tree
 - [ ] Civilizations
 - [ ] Firebase implementation - Accounts and multiplayer games
 - [ ] Music player
