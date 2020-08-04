@@ -9,7 +9,6 @@ func populateTree(var tree, var TreeName):
 	treeName.text = str(TreeName)
 	var parent = null #TODO JSON's don't keep order so will need to encode parent data in JSON
 	for tech in tree:
-		print(tech)
 		var t = techScene.instance()
 		rows.add_child(t)
 		techs.append(t)

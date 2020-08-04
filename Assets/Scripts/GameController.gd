@@ -77,9 +77,9 @@ func spawnUnit(var hex, var unitType):
 
 func spawnCity(var hex): 
 	var c = city1.instance()
-	get_node("Map").add_child(c)
+	hex.add_child(c)
 	hex.makeCityCentre()
-	c.initialise(hex.pos(), hex, getCityName()) #TODO city name
+	c.initialise(hex, getCityName())
 	cities.append(c)
 	print("Created City")
 

@@ -22,6 +22,9 @@ var biomeResources = {SEA:resources.FOOD,COAST:resources.FOOD,GRASS:resources.FO
 #TODO make biome and tile data a JSON?
 
 export (Array, PackedScene) var edgeModels #coast, sea, ground, beach
+export (PackedScene) var fogOfWar
+
+#var edgeFog = [] TODO use again with edges
 
 var mapCols = 30 #TODO Change just to mapRadius or Diameter
 var mapRows = 30
@@ -32,8 +35,9 @@ var rotations = [0,-60,-120,-180,-240,-300] #Could just do i*60
 #generators
 var rng = RandomNumberGenerator.new()
 var noise = OpenSimplexNoise.new()
-var terraMap
-var tempMap
+onready var terraMap = genNoiseMap(20,-168)
+onready var tempMap = genNoiseMap(20,-152)
+onready var resMap = genNoiseMap(1,1)
 
 var seaLevel = 0
 var deepSeaLevel = -0.1
@@ -46,8 +50,6 @@ var mapGenerated = false
 
 func _ready():
 	rng.randomize()
-	terraMap = genNoiseMap(20,-168) 		#TODO simplify? TEMP seed
-	tempMap = genNoiseMap(20,-152) 		#---  simplify
 	genMap()						#--- unify with noisemap?
 
 #Map Generation
@@ -90,9 +92,11 @@ func genMap():
 			var resource = null
 			var resourceAmt = 0
 			if resourceType == resources.GOLD: #TODO change and simplify method
-				resourceAmt = rng.randi_range(0,6)-3#(0,24)-21 - TEMP common for debugging
+				#resourceAmt = rng.randi_range(0,6)-3#(0,24)-21 - TEMP common for debugging
+				resourceAmt = round(resMap[q][r] * 6)
 			else:
-				resourceAmt = rng.randi_range(0,6)-3 #TODO change from hard coded values like this
+				#resourceAmt = rng.randi_range(0,6)-3 #TODO change from hard coded values like this
+				resourceAmt = round(resMap[q][r] * 6)
 			if resourceAmt > 0:
 				resource =  resourceType
 			else:
@@ -110,7 +114,14 @@ func genMap():
 				var res = resourceModels[type][resourceAmt-1].instance()
 				h.add_child(res)
 				res.name = "res"
-				#res.transform.origin = h.pos()
+				
+			#Fog of War
+			var fog = fogOfWar.instance()
+			add_child(fog)
+			fog.transform.origin = h.pos()
+			fog.initialise(h)
+			h.fog = fog
+			
 	genEdges()
 	mapGenerated = true
 
@@ -159,6 +170,10 @@ func instanceEdge(var hex, var edgeType, var dir):
 	hex.add_child(edge)
 	edge.rotate_y(deg2rad(rotations[dir]))
 	hex.edges.append([edgeType,dir])
+
+#func refreshFogEdges(): TODO use again when use edges
+#	for fog in edgeFog:
+#		fog.checkEdges()
 
 #Accesing Map helper functions
 

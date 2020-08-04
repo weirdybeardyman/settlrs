@@ -11,6 +11,7 @@ var targetHex
 var possibleHexes = []
 var hexPath = []
 var highlightedHexes = []
+var viewedHexes = []
 var selecting = false
 var isSelected = false
 var isMoving = false
@@ -26,19 +27,23 @@ var lerpCutoff = 0.05
 onready var objType = gc.objTypes.UNIT
 var unitType
 var abilities = []#[canCoast,canSea,canLand,canSettle] - change this? - TODO Why set here, why not just reference GC every time?
+var viewRange = 2
+var mountainViewRange = 3
 #Visuals
 onready var outlineMesh = get_node("Cube/Outline")
 
 #--Operations--
 
 func _ready():
-	newTurn() #TEST
+	pass
+	#newTurn() #TEST
 
 func initialise(var pos, var hex, var UnitType, var Abilities): 
 	transform.origin = pos 
 	currentHex = hex
 	unitType = UnitType
 	abilities = Abilities
+	newTurn()
 
 func _process(delta):
 	if camera.moved:
@@ -57,6 +62,7 @@ func _physics_process(delta):
 func newTurn():
 	unHighlightHexes()
 	movesLeft = moveRange
+	viewHexes(currentHex)
 
 func workHex():#(var hex): #TODO use hex or currentHex? 
 	currentHex.beingWorked =  true 
@@ -80,6 +86,21 @@ func useAllMovement(): #For any actions not movement that use all the units move
 	#TEMP empty pos hexes
 	unHighlightHexes()
 	possibleHexes = []
+
+func viewHexes(var hex):
+	var hexes = []
+	if currentHex.hexType == hexMap.MOUNTAIN:
+		hexes = hexMap.getHexesWithinRangeOf(hex, mountainViewRange)
+	else:
+		hexes = hexMap.getHexesWithinRangeOf(hex, viewRange)
+	for hex in hexes:
+		hex.fog.inView(self)
+	#Unview hexes
+	for hex in viewedHexes:
+		if !hexes.has(hex):
+			hex.fog.unView(self)
+	viewedHexes = hexes
+#	hexMap.refreshFogEdges() TODO reenable when use edges again
 
 #--Helpers--
 
@@ -117,11 +138,11 @@ func getPosHexes() -> Array:
 
 func canTraverse(var hex) -> bool:
 	if hex.hexType == hexMap.COAST:
-		return abilities[0] && gc.civBuffs["CanCoast"]
+		return abilities[0] && gc.civBuffs["Can"]["Coast"]
 	elif hex.hexType == hexMap.SEA:
-		return abilities[1] && gc.civBuffs["CanSea"]
+		return abilities[1] && gc.civBuffs["Can"]["Sea"]
 	elif hex.hexType == hexMap.MOUNTAIN:
-		return abilities[2] && gc.civBuffs["CanClimb"]
+		return abilities[2] && gc.civBuffs["Can"]["Climb"]
 	return abilities[2]
 
 func canBuildRoad() -> bool:
@@ -150,6 +171,7 @@ func moveToHex(var hex):
 	movesLeft -= pathfinder.costToHex(hex)
 	currentHex = hex 
 	hex.addUnit(self)
+	#viewHexes()
 	if canMove():
 		possibleHexes = getPosHexes()
 	else:
@@ -160,6 +182,7 @@ func lerpToTarget(delta): #TODO make targetHex an input member
 	if transform.origin.distance_to(targetHex.pos()) < lerpCutoff: 
 		if hexPath.empty(): 
 			highlightHexes(possibleHexes) #Highlight possible hexes when reached final hex
+		viewHexes(targetHex)
 		targetHex = null
 		t = 0
 		isMoving = false

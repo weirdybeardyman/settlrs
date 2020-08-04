@@ -1,8 +1,8 @@
 extends Spatial
 
 #references
-onready var gc = get_parent().get_parent()
-onready var hexMap = get_parent()
+onready var gc = get_parent().get_parent().get_parent()
+onready var hexMap = get_parent().get_parent()
 
 onready var objType = gc.objTypes.CITY
 var centreHex
@@ -21,8 +21,7 @@ var connectedCities = []
 onready var outlineMesh = get_node("Cube_003/Outline")
 
 #--Operations--
-func initialise(var pos, var centre, var cityname):
-	transform.origin = pos
+func initialise(var centre, var cityname):
 	centreHex = centre
 	hexes = hexMap.getHexesWithinRangeOf(centreHex,baseRadius) 
 	hexes.append(centreHex) #TODO should resources be gathered from centre hex
@@ -34,6 +33,8 @@ func initialise(var pos, var centre, var cityname):
 		getTileResources(hex)
 		if hex.hasRoad:
 			hex.updateRoad()
+		hex.fog.inView(self) #TODO should be able to see around city at least one hex
+#		hexMap.refreshFogEdges() #TODO use again for edges
 	cityName = cityname
 
 func newTurn():
@@ -67,6 +68,8 @@ func expandCity(var hex): #Every three hexes added level up the city
 	hex.addCity(self)
 	hexes.append(hex)
 	getTileResources(hex)
+	hex.fog.inView(self)
+#	hexMap.refreshFogEdges() #TODO use again for edges
 	highlightHexes()
 
 func getTileResources(var hex):

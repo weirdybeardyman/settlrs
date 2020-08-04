@@ -25,6 +25,7 @@ var edges = [] #edgeType, dir
 var hasRoad = false
 var roads = []
 var cityConnections = []
+var fog
 
 const hexHeight = 2 #Should this be a const or func - radius = 1, height = radius *2
 const widthMulti = sqrt(3) / 2
