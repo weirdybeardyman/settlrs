@@ -1,0 +1,318 @@
+[gd_scene load_steps=46 format=2]
+
+[ext_resource path="res://Temp/Font/segoeuib.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/UI/ore1.png" type="Texture" id=2]
+[ext_resource path="res://Assets/UI/wood1.png" type="Texture" id=3]
+[ext_resource path="res://Assets/UI/wheat1.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Objects/Tiles/Hexes/GrassHex.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Objects/Tiles/Resources/Wood/Forest4_x1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Objects/Tiles/Resources/Ore/Ore1_x1.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/Objects/Tiles/Resources/Fish/Fish1_x3.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Objects/Tiles/Resources/Wood/Forest4_x2.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Objects/Tiles/Hexes/DesertHex.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/Objects/Tiles/Resources/Fish/Fish1_x2.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Assets/Objects/Tiles/Resources/Ore/Ore1_x3.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Assets/Objects/Tiles/Resources/Wood/Forest4_x3.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Assets/Objects/Tiles/Hexes/TundraHex.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Assets/Objects/Tiles/Edges/ground1.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Assets/Objects/Tiles/Hexes/Water/CoastHex.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Assets/Objects/Tiles/Resources/Wheat/Wheat5_x3.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Assets/Objects/Tiles/Resources/Fish/Fish1_x1.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Assets/Objects/Tiles/Hexes/ForestHex.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Assets/Objects/Tiles/Hexes/Mountain/MountainHex.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Assets/Objects/Tiles/Resources/Ore/Ore1_x2.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Assets/Objects/Tiles/Hexes/Water/SeaHex.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Assets/UI/ContextMenu_unit.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Assets/Objects/Tiles/Resources/Gold/Gold1_x1.tscn" type="PackedScene" id=24]
+[ext_resource path="res://Assets/Objects/Tiles/Resources/Gold/Gold1_x2.tscn" type="PackedScene" id=25]
+[ext_resource path="res://Assets/UI/ContextMenu_hex.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Assets/Objects/Tiles/Fog/FogHex.tscn" type="PackedScene" id=27]
+[ext_resource path="res://Assets/Objects/Tiles/Edges/sea1.tscn" type="PackedScene" id=28]
+[ext_resource path="res://Assets/UI/TechTree.tscn" type="PackedScene" id=29]
+[ext_resource path="res://Assets/Objects/Tiles/Edges/coast1.tscn" type="PackedScene" id=30]
+[ext_resource path="res://Assets/Objects/Tiles/Resources/Gold/Gold1_x3.tscn" type="PackedScene" id=31]
+[ext_resource path="res://Assets/UI/ContextMenu_city.tscn" type="PackedScene" id=32]
+[ext_resource path="res://Assets/Objects/Tiles/Resources/Wheat/Wheat5_x1.tscn" type="PackedScene" id=33]
+[ext_resource path="res://Assets/Objects/Cities/Citytest1.tscn" type="PackedScene" id=34]
+[ext_resource path="res://Assets/Objects/Tiles/Resources/Wheat/Wheat5_x2.tscn" type="PackedScene" id=35]
+[ext_resource path="res://Assets/Objects/Tiles/Edges/beach1.tscn" type="PackedScene" id=36]
+[ext_resource path="res://Assets/Objects/Units/testUnit3.tscn" type="PackedScene" id=37]
+[ext_resource path="res://Assets/Scripts/GameController.gd" type="Script" id=38]
+[ext_resource path="res://Assets/Scripts/CameraController.gd" type="Script" id=39]
+[ext_resource path="res://Assets/Scripts/HexMap.gd" type="Script" id=40]
+[ext_resource path="res://Assets/Scripts/Pathfinder.gd" type="Script" id=41]
+
+[sub_resource type="ProceduralSky" id=1]
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+background_energy = 1.01
+ambient_light_color = Color( 1, 1, 1, 1 )
+ambient_light_energy = 1.01
+
+[sub_resource type="DynamicFont" id=3]
+size = 50
+font_data = ExtResource( 1 )
+
+[sub_resource type="StreamTexture" id=4]
+flags = 4
+load_path = "res://.import/gold.png-21ca1769aad8546be5fc8535def5815f.stex"
+
+[node name="GameController" type="Spatial"]
+script = ExtResource( 38 )
+unit1 = ExtResource( 37 )
+city1 = ExtResource( 34 )
+hexMenu = ExtResource( 26 )
+unitMenu = ExtResource( 23 )
+cityMenu = ExtResource( 32 )
+techTreeMenu = ExtResource( 29 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="WorldEnvironment"]
+transform = Transform( 0.866025, -0.383022, 0.321394, 0.106183, 0.769012, 0.630354, -0.488595, -0.511776, 0.706654, 0, 10.8227, -6.68727 )
+
+[node name="Map" type="Node" parent="."]
+script = ExtResource( 40 )
+hexGrass = ExtResource( 5 )
+hexDesert = ExtResource( 10 )
+hexForest = ExtResource( 19 )
+hexMountain = ExtResource( 20 )
+hexTundra = ExtResource( 14 )
+hexSea = ExtResource( 22 )
+hexCoast = ExtResource( 16 )
+wheatModels = [ ExtResource( 33 ), ExtResource( 35 ), ExtResource( 17 ) ]
+fishModels = [ ExtResource( 18 ), ExtResource( 11 ), ExtResource( 8 ) ]
+woodModels = [ ExtResource( 6 ), ExtResource( 9 ), ExtResource( 13 ) ]
+oreModels = [ ExtResource( 7 ), ExtResource( 21 ), ExtResource( 12 ) ]
+goldModels = [ ExtResource( 24 ), ExtResource( 25 ), ExtResource( 31 ) ]
+edgeModels = [ ExtResource( 30 ), ExtResource( 28 ), ExtResource( 15 ), ExtResource( 36 ) ]
+fogOfWar = ExtResource( 27 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 9.367, 6.71391, 4.227 )
+script = ExtResource( 39 )
+
+[node name="Pathfinder" type="Spatial" parent="."]
+script = ExtResource( 41 )
+
+[node name="Control" type="Control" parent="."]
+margin_right = 1028.0
+margin_bottom = 94.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Inventory GUI" type="MarginContainer" parent="Control"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -511.19
+margin_top = 2.0
+margin_right = 490.25
+margin_bottom = 109.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="Control/Inventory GUI"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 981.0
+margin_bottom = 87.0
+color = Color( 1, 1, 1, 0.294118 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Inventory GUI"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 981.0
+margin_bottom = 87.0
+
+[node name="Food" type="VBoxContainer" parent="Control/Inventory GUI/HBoxContainer"]
+margin_right = 237.0
+margin_bottom = 67.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Control/Inventory GUI/HBoxContainer/Food"]
+margin_right = 237.0
+margin_bottom = 67.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/Inventory GUI/HBoxContainer/Food/HSplitContainer"]
+margin_right = 112.0
+margin_bottom = 67.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 4 )
+region_rect = Rect2( 167.301, 153.345, 579.203, 623.142 )
+
+[node name="Label" type="Label" parent="Control/Inventory GUI/HBoxContainer/Food/HSplitContainer"]
+margin_left = 124.0
+margin_right = 237.0
+margin_bottom = 67.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 3 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Wood" type="VBoxContainer" parent="Control/Inventory GUI/HBoxContainer"]
+margin_left = 241.0
+margin_right = 478.0
+margin_bottom = 67.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Control/Inventory GUI/HBoxContainer/Wood"]
+margin_right = 237.0
+margin_bottom = 67.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/Inventory GUI/HBoxContainer/Wood/HSplitContainer"]
+margin_right = 112.0
+margin_bottom = 67.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 3 )
+region_rect = Rect2( 167.301, 153.345, 579.203, 623.142 )
+
+[node name="Label" type="Label" parent="Control/Inventory GUI/HBoxContainer/Wood/HSplitContainer"]
+margin_left = 124.0
+margin_right = 237.0
+margin_bottom = 67.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 3 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ore" type="VBoxContainer" parent="Control/Inventory GUI/HBoxContainer"]
+margin_left = 482.0
+margin_right = 719.0
+margin_bottom = 67.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Control/Inventory GUI/HBoxContainer/Ore"]
+margin_right = 237.0
+margin_bottom = 67.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/Inventory GUI/HBoxContainer/Ore/HSplitContainer"]
+margin_right = 112.0
+margin_bottom = 67.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 2 )
+region_rect = Rect2( 167.301, 153.345, 579.203, 623.142 )
+
+[node name="Label" type="Label" parent="Control/Inventory GUI/HBoxContainer/Ore/HSplitContainer"]
+margin_left = 124.0
+margin_right = 237.0
+margin_bottom = 67.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 3 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gold" type="VBoxContainer" parent="Control/Inventory GUI/HBoxContainer"]
+margin_left = 723.0
+margin_right = 961.0
+margin_bottom = 67.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Control/Inventory GUI/HBoxContainer/Gold"]
+margin_right = 238.0
+margin_bottom = 67.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/Inventory GUI/HBoxContainer/Gold/HSplitContainer"]
+margin_right = 113.0
+margin_bottom = 67.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource( 4 )
+region_rect = Rect2( -14.7144, 18.6354, 547.247, 467.357 )
+
+[node name="Label" type="Label" parent="Control/Inventory GUI/HBoxContainer/Gold/HSplitContainer"]
+margin_left = 125.0
+margin_right = 238.0
+margin_bottom = 67.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 3 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Next Turn Holder" type="MarginContainer" parent="Control"]
+anchor_left = 1.867
+anchor_top = 11.458
+anchor_right = 1.867
+anchor_bottom = 11.458
+margin_left = -1719.28
+margin_top = -105.052
+margin_right = -1569.28
+margin_bottom = -25.052
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Next Turn" type="Button" parent="Control/Next Turn Holder"]
+margin_right = 150.0
+margin_bottom = 80.0
+text = "Next Turn"
+
+[node name="TechTreeButtonHolder" type="MarginContainer" parent="Control"]
+anchor_left = 1.867
+anchor_top = 11.458
+anchor_right = 1.867
+anchor_bottom = 11.458
+margin_left = -1895.25
+margin_top = -104.429
+margin_right = -1745.25
+margin_bottom = -24.4275
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OpenTechTree" type="Button" parent="Control/TechTreeButtonHolder"]
+margin_right = 150.0
+margin_bottom = 80.0
+text = "Tech Tree"
+
+[node name="CloseButtonHolder" type="MarginContainer" parent="Control"]
+anchor_left = 1.867
+anchor_top = 11.458
+anchor_right = 1.867
+anchor_bottom = 11.458
+margin_left = -1519.28
+margin_top = -104.429
+margin_right = -1369.28
+margin_bottom = -24.4275
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Close" type="Button" parent="Control/CloseButtonHolder"]
+margin_right = 150.0
+margin_bottom = 80.0
+text = "Close"
+[connection signal="pressed" from="Control/Next Turn Holder/Next Turn" to="." method="_on_Next_Turn_pressed"]
+[connection signal="pressed" from="Control/TechTreeButtonHolder/OpenTechTree" to="." method="_on_OpenTechTree_pressed"]
+[connection signal="pressed" from="Control/CloseButtonHolder/Close" to="." method="_on_Close_pressed"]
