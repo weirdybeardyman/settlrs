@@ -1,0 +1,17 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Objects/Tiles/Hexes/hex.dae" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Materials/fogOfWar.tres" type="Material" id=2]
+[ext_resource path="res://Assets/Materials/halfFogOfWar.tres" type="Material" id=3]
+[ext_resource path="res://Assets/Objects/Tiles/Fog/Edge/fog1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Scripts/FogOfWar.gd" type="Script" id=5]
+
+
+[node name="Hex" instance=ExtResource( 1 )]
+script = ExtResource( 5 )
+edge = ExtResource( 4 )
+halfFogMat = ExtResource( 3 )
+
+[node name="Circle" parent="." index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0 )
+material/0 = ExtResource( 2 )

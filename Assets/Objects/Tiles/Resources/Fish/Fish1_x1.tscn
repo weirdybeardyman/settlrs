@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Materials/mountainSnow.material" type="Material" id=1]
+[ext_resource path="res://Assets/Objects/Tiles/Resources/Fish/FishBlue.material" type="Material" id=2]
+[ext_resource path="res://Assets/Objects/Tiles/Resources/Fish/FishMouth.material" type="Material" id=3]
+[ext_resource path="res://Assets/Objects/Tiles/Resources/Fish/Fish_x1.dae" type="PackedScene" id=4]
+
+
+[node name="Fish_x1" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 0.999461, -0.0328412, 0, 0.0328412, 0.999461, 0, 0, 0 )
+
+[node name="Fish" parent="." index="0"]
+transform = Transform( 0.262095, 0, 0, 0, 0.0910088, 0, 0, 0, 0.0720786, 0, -0.213, 0 )
+material/0 = ExtResource( 1 )
+material/1 = ExtResource( 2 )
+material/2 = ExtResource( 3 )

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Objects/Tiles/Resources/Ore/Ore1_x1.dae" type="PackedScene" id=1]
+
+
+[node name="Ore1_x1" instance=ExtResource( 1 )]

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Materials/Wheat.material" type="Material" id=1]
+[ext_resource path="res://Assets/Objects/Tiles/Resources/Wheat/Wheat5_x3.dae" type="PackedScene" id=2]
+
+
+[node name="Wheat5" instance=ExtResource( 2 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )
+
+[node name="Wheat_008" parent="." index="0"]
+material/0 = ExtResource( 1 )

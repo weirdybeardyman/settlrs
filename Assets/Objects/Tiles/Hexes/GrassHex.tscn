@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/Objects/Tiles/Hexes/hex.dae" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Scripts/Hex.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Materials/grass.material" type="Material" id=3]
+[ext_resource path="res://Assets/Objects/Roads/road1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Objects/Tiles/Hexes/Highlight/hexHighlight2.tscn" type="PackedScene" id=6]
+
+
+[sub_resource type="ConcavePolygonShape" id=1]
+data = PoolVector3Array( -0.866, 0, 0.5, 0, 0, -1, 0.866, 0, -0.5, 0, 0, -1, -0.866, 0, 0.5, -0.866, 0, -0.5, -0.866, 0, 0.5, 0.866, 0, 0.5, 0, 0, 1, 0.866, 0, 0.5, -0.866, 0, 0.5, 0.866, 0, -0.5 )
+
+[node name="Hex" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+road = ExtResource( 5 )
+
+[node name="Circle" parent="." index="0"]
+material/0 = ExtResource( 3 )
+
+[node name="hexHighlight2" parent="." index="1" instance=ExtResource( 6 )]
+
+[node name="StaticBody" type="StaticBody" parent="." index="2"]
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody" index="0"]
+visible = false
+shape = SubResource( 1 )
+[connection signal="input_event" from="StaticBody" to="." method="_on_StaticBody_input_event"]
