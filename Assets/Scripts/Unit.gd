@@ -100,7 +100,7 @@ func viewHexes(var hex):
 		if !hexes.has(hex):
 			hex.fog.unView(self)
 	viewedHexes = hexes
-#	hexMap.refreshFogEdges() TODO reenable when use edges again
+	hexMap.refreshFogEdges() #Disable if using 2d Simple fog
 
 #--Helpers--
 

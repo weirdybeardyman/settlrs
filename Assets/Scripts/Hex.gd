@@ -4,7 +4,6 @@ var q
 var r 
 var s
 
-export (PackedScene) var hexHighlight
 export (PackedScene) var road
 onready var highlight = get_node("hexHighlight2")
 onready var camera = get_viewport().get_camera()

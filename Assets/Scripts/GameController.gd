@@ -48,7 +48,6 @@ var civilization = "China"
 
 func _ready():
 	loadTechTree()
-	#loadCivBuffs()
 
 func _process(delta):
 	if hexMap.mapGenerated && units.size() == 0:
@@ -66,7 +65,7 @@ func nextTurn():
 func spawnUnit(var hex, var unitType):
 	#TEST
 	if playerResources[hexMap.resources.FOOD] > 0:
-		spendResource(hexMap.resources.FOOD, unitData[unitType]["Cost"])#unitCosts[unitType])
+		spendResource(hexMap.resources.FOOD, unitData[unitType]["Cost"])
 	var obj = unitModels[unitType]
 	var u = obj.instance()
 	get_node("Map").add_child(u)

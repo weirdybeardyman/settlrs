@@ -24,7 +24,7 @@ var biomeResources = {SEA:resources.FOOD,COAST:resources.FOOD,GRASS:resources.FO
 export (Array, PackedScene) var edgeModels #coast, sea, ground, beach
 export (PackedScene) var fogOfWar
 
-#var edgeFog = [] TODO use again with edges
+var fog = []
 
 var mapCols = 30 #TODO Change just to mapRadius or Diameter
 var mapRows = 30
@@ -171,9 +171,10 @@ func instanceEdge(var hex, var edgeType, var dir):
 	edge.rotate_y(deg2rad(rotations[dir]))
 	hex.edges.append([edgeType,dir])
 
-#func refreshFogEdges(): TODO use again when use edges
-#	for fog in edgeFog:
-#		fog.checkEdges()
+func refreshFogEdges(): #Disable if using 2d Simple fog
+	for f in fog:
+		if f.isDiscovered:
+			f.refreshEdges()
 
 #Accesing Map helper functions
 

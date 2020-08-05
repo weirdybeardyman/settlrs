@@ -34,7 +34,7 @@ func initialise(var centre, var cityname):
 		if hex.hasRoad:
 			hex.updateRoad()
 		hex.fog.inView(self) #TODO should be able to see around city at least one hex
-#		hexMap.refreshFogEdges() #TODO use again for edges
+		hexMap.refreshFogEdges() #Disable if using 2d Simple fog
 	cityName = cityname
 
 func newTurn():
