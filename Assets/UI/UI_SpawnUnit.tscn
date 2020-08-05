@@ -1,0 +1,11 @@
+[gd_scene format=2]
+
+[node name="Spawn Unit" type="Button"]
+margin_right = 205.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Settler - 20"
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -3,12 +3,15 @@
 [ext_resource path="res://Assets/Scripts/UI_CityContext.gd" type="Script" id=1]
 [ext_resource path="res://Assets/UI/close-button.png" type="Texture" id=2]
 [ext_resource path="res://Temp/Font/segoeuib.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://Temp/ore1.png" type="Texture" id=4]
-[ext_resource path="res://Temp/wheat1.png" type="Texture" id=5]
-[ext_resource path="res://UI_Resources.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Temp/fish1.png" type="Texture" id=9]
-[ext_resource path="res://Temp/wood1.png" type="Texture" id=10]
-[ext_resource path="res://UI_SpawnUnit.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Assets/UI/ore1.png" type="Texture" id=4]
+[ext_resource path="res://Assets/UI/wheat1.png" type="Texture" id=5]
+[ext_resource path="res://Assets/UI/UI_Resources.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/UI/fish1.png" type="Texture" id=9]
+[ext_resource path="res://Assets/UI/wood1.png" type="Texture" id=10]
+[ext_resource path="res://Assets/UI/UI_SpawnUnit.tscn" type="PackedScene" id=11]
+
+
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 27
