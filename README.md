@@ -12,6 +12,13 @@ Godot multiplayer hex strategy game for mobile.
 - [ ] Firebase implementation - Accounts and multiplayer games
 - [ ] Audio player
 
+**TODO**
+* Optimise Fog of War
+* Distribute responsibility of GameController
+* Intergrate Serialization of maps and game state
+* Intergrate with Firebase for accounts and multiplayer games
+* Implement different Civilizations
+
 **Fog of war**
 **3D** - This is the default fog of war, it uses a rasied hex and instanciates edges along the edges of the fog. It is un-optimised currently and will use more processing and a ltitle more graphical power than the simple 2d fog of war.
 **2D** - This simple version of the fog of war can be enabled by commenting out or removing all code marked "#Disable if using 2d Simple fog" on Hexmap.gd, City.gd, Unit.gd and of course FogOfWar.gd
