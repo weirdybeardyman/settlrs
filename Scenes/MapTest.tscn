@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://Temp/Font/segoeuib.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Assets/UI/ore1.png" type="Texture" id=2]
@@ -41,6 +41,7 @@
 [ext_resource path="res://Assets/Scripts/CameraController.gd" type="Script" id=39]
 [ext_resource path="res://Assets/Scripts/HexMap.gd" type="Script" id=40]
 [ext_resource path="res://Assets/Scripts/Pathfinder.gd" type="Script" id=41]
+[ext_resource path="res://Assets/UI/Stats.tscn" type="PackedScene" id=42]
 
 [sub_resource type="ProceduralSky" id=1]
 
@@ -313,6 +314,12 @@ __meta__ = {
 margin_right = 150.0
 margin_bottom = 80.0
 text = "Close"
+
+[node name="Stats" parent="Control" instance=ExtResource( 42 )]
+margin_left = 1526.38
+margin_top = 4.76003
+margin_right = 1526.38
+margin_bottom = 4.76003
 [connection signal="pressed" from="Control/Next Turn Holder/Next Turn" to="." method="_on_Next_Turn_pressed"]
 [connection signal="pressed" from="Control/TechTreeButtonHolder/OpenTechTree" to="." method="_on_OpenTechTree_pressed"]
 [connection signal="pressed" from="Control/CloseButtonHolder/Close" to="." method="_on_Close_pressed"]
