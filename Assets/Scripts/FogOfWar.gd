@@ -21,9 +21,6 @@ func initialise(var Hex): #TODO send discovered when loading game - arr of boole
 	hex.visible = false
 	for unit in hex.units: #Currently occuring before test unit is spawned in
 		unit.visible = false
-	
-	#Disable if using 2d Simple fog
-	hexMap.fog.append(self)
 
 func inView(var viewer):
 	if !viewers.has(viewer):
@@ -51,6 +48,7 @@ func hide():
 
 func discover():
 	isDiscovered = true
+	hexMap.fog.append(self) #Small optimisation - only check edges if have been discovered - will bloat as you explore map
 	fog.set_surface_material(0,halfFogMat)
 	show()
 
@@ -87,7 +85,6 @@ func removeEdge(var dir): #Disable if using 2d Simple fog
 		var e = edges[dir]
 		edges.erase(dir)
 		e.queue_free()
-		#e.free()
 
 func isInView() -> bool:
 	return !viewers.empty()
