@@ -173,8 +173,7 @@ func instanceEdge(var hex, var edgeType, var dir):
 
 func refreshFogEdges(): #Disable if using 2d Simple fog
 	for f in fog:
-		if f.isDiscovered:
-			f.refreshEdges()
+		f.refreshEdges()
 
 #Accesing Map helper functions
 
