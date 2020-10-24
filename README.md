@@ -1,6 +1,8 @@
 # settlrs
 Godot multiplayer hex strategy game for mobile.
 
+![Screenshot](https://github.com/weirdybeardyman/settlrs/blob/dev/screenshot1.png)
+
 **Including;**
 - [x] Touch Top-down Camera Controller
 - [x] Simplex-noise map generation and resource distribution
