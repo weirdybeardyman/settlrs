@@ -1,4 +1,5 @@
 # settlrs
+![Screenshot](https://github.com/weirdybeardyman/settlrs/blob/dev/icon.png)
 Godot multiplayer hex strategy game for mobile.
 
 ![Screenshot](https://github.com/weirdybeardyman/settlrs/blob/dev/screenshot1.png)
