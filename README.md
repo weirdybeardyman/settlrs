@@ -1,5 +1,6 @@
 # settlrs
-![Logo](icon.png | width = 100)
+
+<img src="icon.png" alt="Icon" width="100" height="100">
 Godot multiplayer hex strategy game for mobile.
 
 ![Screenshot](screenshot1.png)
